@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>창업 프로젝트</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;600&family=Gothic+A1:wght@400;500;700;800;900&display=swap">
+<style>
+/* Layout: 기업 기술 홈페이지형. 흰 헤더(영문 대문자 메뉴) → 연회색 히어로(왼쪽 문구, 오른쪽 모니터·폰 목업 속 실제 대시보드와 시연 영상) → 소개 2단 → 어두운 기술 띠 → 아이콘 카드 그리드 → 어두운 푸터. 포인트 색은 코퍼레이트 블루 하나. 라이트 단일 테마. */
+:root{
+  --bg:#ffffff; --gray:#f5f6f8; --gray-2:#eceef1; --line:#e2e5e9;
+  --head:#222831; --text:#5f6670; --muted:#9aa1ab;
+  --blue:#0a5bd3; --blue-dk:#0849ab; --blue-soft:#eaf1fc;
+  --navy:#0d1626; --navy-2:#162238;
+  --red:#e5484d; --green:#18b26b;
+  --dash-bg:#0f1626; --dash-panel:#151f33; --dash-line:#24304a; --dash-fg:#e8edf5; --dash-muted:#8b97ab;
+  --f-kr:"Geist","Gothic A1","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-en:"Geist","Gothic A1",system-ui,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,Menlo,Consolas,monospace;
+  --wrap:1240px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--f-kr);font-size:16px;line-height:1.75;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;word-break:keep-all}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:#fff}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{margin:0;color:var(--head);letter-spacing:-.03em;text-wrap:balance;line-height:1.35}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:3px}
+.en{font-family:var(--f-en);letter-spacing:.02em}
+
+/* ---------- header ---------- */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;height:76px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;justify-self:start}
+.logo .mk{width:34px;height:34px;border-radius:7px;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.logo .mk i{width:9px;height:9px;border-radius:50%;display:block}
+.logo b{display:block;font-size:17px;color:var(--head);font-weight:900;letter-spacing:-.04em;line-height:1.15}
+.logo small{display:block;font-family:var(--f-en);font-size:9.5px;font-weight:600;letter-spacing:.14em;color:var(--muted);line-height:1.3}
+nav{display:flex;gap:44px}
+.tab{appearance:none;border:0;background:none;padding:26px 0;cursor:pointer;font:600 13.5px/1 var(--f-en);letter-spacing:.06em;color:var(--head);position:relative}
+.tab span{display:block;font:500 11px/1 var(--f-kr);letter-spacing:0;color:var(--muted);margin-top:6px}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--blue);transform:scaleX(0);transition:transform .25s}
+.tab:hover{color:var(--blue)}
+.tab[aria-selected="true"]{color:var(--blue)}
+.tab[aria-selected="true"]::after{transform:scaleX(1)}
+.hd-right{justify-self:end;display:flex;gap:6px}
+.chipbtn{font:600 12px/1 var(--f-en);letter-spacing:.04em;padding:8px 14px;border-radius:3px;border:1.5px solid var(--blue);text-decoration:none;background:#fff;color:var(--blue);cursor:pointer;white-space:nowrap}
+.chipbtn.fill{background:var(--blue);color:#fff}
+
+/* ---------- buttons / common ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 15px/1 var(--f-kr);padding:15px 30px;border-radius:3px;border:0;cursor:pointer;text-decoration:none;background:var(--blue);color:#fff;transition:background .2s}
+.btn:hover{background:var(--blue-dk)}
+.btn.ghost{background:transparent;border:1.5px solid #cfd4da;color:var(--head)}
+.btn.ghost:hover{border-color:var(--head);background:transparent}
+.btn.white{background:#fff;color:var(--navy)}
+.btn.white:hover{background:#e9eef6}
+.btn.sm{padding:11px 20px;font-size:14px}
+.btn .pl{font-family:var(--f-en);font-weight:600}
+section{padding-block:120px}
+.gray{background:var(--gray)}
+.eyebrow{display:block;font:600 13px/1 var(--f-en);letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
+.h2{font-size:clamp(26px,3vw,34px);font-weight:700}
+.lead{font-size:17px;color:var(--text);margin-top:18px;max-width:34em}
+.center{text-align:center}
+.center .lead{margin-left:auto;margin-right:auto}
+.panel{animation:fade .45s ease both}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(180deg,#f3f4f7 0%,#eef0f3 100%);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:5fr 7fr;gap:40px;align-items:center;padding-block:96px 104px}
+.hero-grid > *{min-width:0}
+.hero .tagline{font:600 15px/1.4 var(--f-en);color:var(--blue);letter-spacing:.01em;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.hero .tagline::before{content:"";width:28px;height:2px;background:var(--blue);flex:none}
+.hero h1{font-family:var(--f-en);font-size:clamp(42px,5vw,66px);font-weight:700;letter-spacing:-.045em;line-height:1.04}
+.hero .kr-h1{font-size:clamp(20px,2vw,24px);font-weight:800;color:var(--head);letter-spacing:-.04em;margin-top:20px}
+.hero .sub{font-size:17px;margin-top:22px;max-width:30em}
+.hero .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:36px}
+.hero .facts{display:flex;gap:36px;margin-top:52px;padding-top:28px;border-top:1px solid #dcdfe4;flex-wrap:wrap}
+.hero .facts b{display:block;font:700 26px/1.1 var(--f-en);color:var(--head);letter-spacing:-.02em}
+.hero .facts b small{font-size:14px;margin-left:2px}
+.hero .facts span{font-size:13px;color:var(--muted)}
+
+/* device mockups */
+.devices{position:relative}
+.monitor{position:relative;width:100%}
+.monitor .frame{background:#1b1e24;border-radius:16px;padding:12px;box-shadow:0 50px 80px -40px rgba(13,22,38,.55),0 0 0 1px rgba(0,0,0,.05);position:relative}
+.monitor .frame::after{content:"";display:block;height:30px;margin:12px -12px -12px;border-radius:0 0 16px 16px;background:linear-gradient(#e9ebef,#d9dce1)}
+.monitor .screen{aspect-ratio:16/10;border-radius:4px;overflow:hidden;background:var(--dash-bg)}
+.monitor .neck{width:22%;height:56px;margin:0 auto;background:linear-gradient(90deg,#c9cdd3,#e7e9ec 45%,#c3c7cd);clip-path:polygon(12% 0,88% 0,100% 100%,0 100%)}
+.monitor .base{width:34%;height:10px;margin:0 auto;border-radius:3px 3px 8px 8px;background:linear-gradient(#e4e6ea,#c8ccd2)}
+.phone{position:absolute;right:-64px;bottom:-8px;width:19%;min-width:104px;background:#14171c;border-radius:26px;padding:8px;box-shadow:0 30px 50px -20px rgba(13,22,38,.55)}
+.phone .ps{border-radius:19px;overflow:hidden;aspect-ratio:9/19;background:#000;position:relative}
+.phone video{display:block;width:100%;height:100%;object-fit:cover}
+.phone .rec{position:absolute;left:8px;top:8px;font:600 9.5px/1 var(--f-en);letter-spacing:.06em;color:#fff;background:rgba(0,0,0,.55);padding:5px 7px;border-radius:5px;display:flex;align-items:center;gap:5px}
+.phone .rec::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red)}
+
+/* ---------- dashboard (container-aware) ---------- */
+.dash{container-type:inline-size;container-name:dash;height:100%;display:flex;flex-direction:column;background:var(--dash-bg);color:var(--dash-fg);font-family:var(--f-kr)}
+.dash-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border-bottom:1px solid var(--dash-line);flex:none}
+.dash-title{display:flex;align-items:center;gap:10px;min-width:0}
+.dash-title b{font-size:13px;font-weight:700;white-space:nowrap}
+.dash-title .loc{font-size:11px;color:var(--dash-muted);white-space:nowrap}
+.sim-tag{font-family:var(--f-mono);font-size:9.5px;color:var(--dash-muted);border:1px solid var(--dash-line);border-radius:4px;padding:2px 6px}
+.dash-ctrl{display:flex;align-items:center;gap:6px}
+.seg{display:flex;background:#0b111e;border:1px solid var(--dash-line);border-radius:7px;padding:2px}
+.seg button{appearance:none;border:0;background:transparent;color:var(--dash-muted);font:500 11px/1 var(--f-kr);padding:6px 8px;border-radius:5px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--dash-panel);color:var(--dash-fg);box-shadow:0 0 0 1px var(--dash-line)}
+.icon-btn{appearance:none;border:1px solid var(--dash-line);background:#0b111e;color:var(--dash-fg);font:500 11px/1 var(--f-kr);padding:7px 10px;border-radius:7px;cursor:pointer;white-space:nowrap}
+.dash-body{flex:1;min-height:0;display:grid;grid-template-columns:1fr 31%}
+.dash-body > *{min-width:0;min-height:0}
+.canvas-box{position:relative;border-right:1px solid var(--dash-line)}
+#road{position:absolute;inset:0;width:100%;height:100%;display:block}
+.mini{position:absolute;right:8px;top:8px;display:none;gap:8px;align-items:center;background:rgba(11,17,30,.85);border:1px solid var(--dash-line);border-radius:7px;padding:4px 8px;font-size:10px;color:var(--dash-fg)}
+.mini i{width:8px;height:8px;border-radius:50%;display:inline-block;background:#333;margin-right:3px;vertical-align:-1px}
+.side{padding:12px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.side h4{margin:0 0 5px;font-size:10px;font-weight:500;color:var(--dash-muted);letter-spacing:.02em}
+.sig-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.sig{background:var(--dash-panel);border:1px solid var(--dash-line);border-radius:8px;padding:7px 8px;display:flex;align-items:center;gap:7px;min-width:0}
+.lamps{display:flex;flex-direction:column;gap:3px;background:#05080f;border-radius:5px;padding:3px;flex:none}
+.lamps i{width:8px;height:8px;border-radius:50%;display:block;background:#2a1517;transition:background .2s,box-shadow .2s}
+.lamps i.g{background:#0f2a1d}
+.lamps i.r.on{background:var(--red);box-shadow:0 0 8px var(--red)}
+.lamps i.g.on{background:var(--green);box-shadow:0 0 8px var(--green)}
+.sig b{display:block;font-size:11.5px;line-height:1.3;color:var(--dash-fg)}
+.sig span{display:block;font-size:10px;color:var(--dash-muted);line-height:1.3;white-space:nowrap}
+.sensor{background:var(--dash-panel);border:1px solid var(--dash-line);border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sensor .state{font-size:11.5px;font-weight:700;display:flex;align-items:center;gap:6px;color:var(--dash-fg)}
+.sensor .state::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dash-muted)}
+.sensor.on .state{color:#7fb2ff}
+.sensor.on .state::before{background:#4f8cff;box-shadow:0 0 8px #4f8cff}
+.sensor .dist{font-family:var(--f-mono);font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--dash-fg)}
+.sensor .dist small{font-size:10px;color:var(--dash-muted);margin-left:2px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.kpi{background:var(--dash-panel);border:1px solid var(--dash-line);border-radius:8px;padding:6px 9px}
+.kpi span{display:block;font-size:10px;color:var(--dash-muted);line-height:1.4}
+.kpi b{font-family:var(--f-mono);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.3;color:var(--dash-fg)}
+.kpi b small{font-size:10px;color:var(--dash-muted);font-weight:500;margin-left:2px}
+.log{list-style:none;margin:0;padding:0;font-size:10.5px;display:flex;flex-direction:column;gap:4px}
+.log li{display:grid;grid-template-columns:auto 1fr;gap:6px;color:#c3ccda;line-height:1.35;white-space:nowrap;overflow:hidden}
+.log li span{overflow:hidden;text-overflow:ellipsis}
+.log time{font-family:var(--f-mono);color:var(--dash-muted);font-size:9.5px}
+@container dash (max-width:640px){
+  .dash-title .loc,.seg{display:none}
+  .dash-body{grid-template-columns:1fr}
+  .side{display:none}
+  .canvas-box{border-right:0}
+  .mini{display:flex}
+}
+@container dash (min-width:900px){
+  .dash-top{padding:12px 18px}
+  .dash-title b{font-size:15px}.dash-title .loc{font-size:12.5px}
+  .seg button,.icon-btn{font-size:12.5px;padding:8px 11px}
+  .side{padding:18px;gap:14px}
+  .side h4{font-size:11.5px}
+  .sig{padding:11px 12px}.sig b{font-size:13px}.sig span{font-size:11.5px}
+  .lamps i{width:10px;height:10px}
+  .sensor{padding:12px 14px}.sensor .state{font-size:13px}.sensor .dist{font-size:20px}
+  .kpi{padding:10px 12px}.kpi span{font-size:11.5px}.kpi b{font-size:22px}
+  .log{font-size:12px;gap:6px}.log time{font-size:11px}
+}
+
+/* ---------- intro ---------- */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.intro > *{min-width:0}
+.intro h2{font-size:clamp(26px,3vw,34px);font-weight:700}
+.intro h2 q{quotes:"‘" "’";color:var(--blue)}
+.intro .en-sub{font:600 18px/1.4 var(--f-en);color:var(--head);margin-top:14px;letter-spacing:0}
+.intro .lead{margin-top:20px}
+.intro .btn{margin-top:36px}
+.photo{border-radius:10px;overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--navy)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 24px 20px;background:linear-gradient(transparent,rgba(13,22,38,.8));color:#fff;font-size:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.photo .cap b{font:600 12px/1 var(--f-en);letter-spacing:.12em;align-self:center}
+
+/* ---------- dark band ---------- */
+.band{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding-block:130px}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 35%,rgba(13,22,38,.55)),url("poster.jpg") right center/cover no-repeat}
+.band::after{content:"";position:absolute;left:0;right:0;bottom:64px;height:3px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.25) 0 36px,transparent 36px 64px)}
+.band .wrap{position:relative;z-index:1}
+.band .eyebrow{color:#7fb0ff}
+.band h2{color:#fff;font-size:clamp(26px,3.2vw,38px);font-weight:900;line-height:1.45;letter-spacing:-.04em}
+.band .btn{margin-top:40px}
+
+/* ---------- card grid ---------- */
+.sec-head{margin-bottom:56px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cards > *{min-width:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:40px 34px 34px;display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s,border-color .25s}
+.card:hover{box-shadow:0 24px 40px -24px rgba(13,22,38,.25);transform:translateY(-3px);border-color:#d3d8de}
+.card .ic{width:56px;height:56px;border-radius:12px;background:var(--blue-soft);display:grid;place-items:center;margin-bottom:28px}
+.card .ic svg{width:28px;height:28px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:20px;font-weight:700;color:var(--blue);margin-bottom:12px;letter-spacing:-.03em}
+.card p{font-size:15px;line-height:1.75}
+.card .num{font:700 34px/1.1 var(--f-en);color:var(--head);letter-spacing:-.02em;margin-bottom:12px}
+.card .num small{font-size:15px;margin-left:3px;font-family:var(--f-kr);font-weight:500;color:var(--text)}
+.card .more{margin-top:auto;padding-top:24px;font-size:13.5px;color:var(--head);font-weight:500;display:flex;align-items:baseline;gap:8px}
+.card .more::before{content:"+";font-family:var(--f-en);color:var(--blue);font-weight:600}
+.card .src{margin-top:auto;padding-top:20px;font:600 12px/1 var(--f-en);letter-spacing:.1em;color:var(--muted)}
+
+/* ---------- how it works ---------- */
+.how{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
+.how > *{min-width:0}
+.steps{margin-top:40px;display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:72px 1fr;gap:12px;padding-block:24px;border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step .n{font:600 13px/1 var(--f-en);color:var(--blue);padding-top:7px;letter-spacing:.06em}
+.step h3{font-size:19px;font-weight:700;margin-bottom:6px}
+.step p{font-size:15px}
+code.k{font-family:var(--f-mono);font-size:13px;color:var(--head);background:var(--gray);border:1px solid var(--line);padding:1px 6px;border-radius:4px;letter-spacing:0}
+.codebox{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 30px 50px -36px rgba(13,22,38,.35)}
+.codebox .hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.codebox .hd b{display:block;color:var(--head);font-size:15px}
+.codebox .hd span{font-size:12.5px;color:var(--muted)}
+.codebox img{display:block;width:100%;height:auto}
+
+/* ---------- demo ---------- */
+.demo{display:grid;grid-template-columns:1fr auto;gap:80px;align-items:center}
+.demo > *{min-width:0}
+.vframe{width:340px;max-width:100%;background:#14171c;border-radius:34px;padding:10px;box-shadow:0 40px 70px -30px rgba(13,22,38,.5)}
+.vframe video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:25px;background:#000}
+.checks{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-direction:column;border-top:1px solid #dcdfe4}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding-block:16px;border-bottom:1px solid #dcdfe4;color:var(--head);font-size:15.5px}
+.checks li::before{content:"";width:20px;height:20px;margin-top:4px;border-radius:50%;background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+
+/* ---------- roadmap ---------- */
+.road{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--head)}
+.road > *{min-width:0}
+.rs{padding:28px 24px 0 0}
+.rs .y{font:600 12px/1 var(--f-en);letter-spacing:.12em;color:var(--muted)}
+.rs.done .y{color:var(--blue)}
+.rs h3{font-size:19px;font-weight:700;margin:14px 0 8px}
+.rs p{font-size:14.5px}
+
+/* ---------- sub page title ---------- */
+.subvis{background:var(--navy);color:#fff;padding-block:88px 84px;position:relative;overflow:hidden}
+.subvis::after{content:"";position:absolute;left:0;right:0;bottom:40px;height:3px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 36px,transparent 36px 64px)}
+.subvis .crumb{font:500 12.5px/1 var(--f-en);letter-spacing:.08em;color:#8fa0bb;margin-bottom:22px}
+.subvis .crumb b{color:#fff;font-weight:600}
+.subvis h1{color:#fff;font:700 clamp(40px,5vw,60px)/1.1 var(--f-en);letter-spacing:.01em}
+.subvis p{color:#b9c4d6;font-size:17px;margin-top:16px}
+
+/* ---------- team ---------- */
+.team{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.team > *{min-width:0}
+.member{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#fff}
+.member .top{background:var(--gray);padding:40px 36px;display:flex;align-items:center;gap:22px}
+.avatar{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;font:900 30px/1 var(--f-kr);color:#fff;background:var(--c);flex:none}
+.member .role{font:600 12px/1 var(--f-en);letter-spacing:.12em;color:var(--blue);display:block;margin-bottom:10px}
+.member h3{font-size:28px;font-weight:900}
+.member .kr{font-size:15px;color:var(--text);margin-top:4px}
+.member ul{list-style:none;margin:0;padding:28px 36px 34px;display:flex;flex-direction:column;gap:12px}
+.member li{display:grid;grid-template-columns:18px 1fr;gap:8px;font-size:15.5px;color:var(--head)}
+.member li::before{content:"";width:6px;height:6px;background:var(--blue);margin-top:11px}
+.vision{margin-top:24px;background:var(--navy);border-radius:6px;padding:64px 56px;display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:start}
+.vision > *{min-width:0}
+.vision .eyebrow{color:#7fb0ff}
+.vision p{color:#fff;font-size:clamp(22px,2.6vw,30px);font-weight:700;line-height:1.5;letter-spacing:-.035em;max-width:24em}
+
+/* ---------- reflection ---------- */
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rgrid > *{min-width:0}
+.rgrid .card h3{color:var(--head)}
+.rgrid .tagno{font:600 12.5px/1 var(--f-en);color:var(--blue);letter-spacing:.08em;margin-bottom:18px;display:block}
+.timeline{display:flex;flex-direction:column}
+.tl{display:grid;grid-template-columns:200px 1fr;gap:40px;padding-block:40px;border-top:1px solid var(--line)}
+.tl:last-child{border-bottom:1px solid var(--line)}
+.tl > *{min-width:0}
+.tl .k{display:flex;flex-direction:column;gap:10px}
+.tl .k .lab{font:600 12px/1 var(--f-en);letter-spacing:.12em;color:var(--muted)}
+.tl .k .st{align-self:flex-start;font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:3px;background:var(--gray);color:var(--head)}
+.tl.err .k .st{background:#fdecec;color:#b42328}
+.tl.ok .k .st{background:var(--blue-soft);color:var(--blue)}
+.tl h3{font-size:22px;font-weight:700;margin-bottom:10px}
+.tl p{font-size:15.5px;max-width:40em}
+.tl .btn{margin-top:22px}
+.diff{margin-top:22px;border:1px solid var(--line);border-radius:6px;overflow:hidden;max-width:460px;font-family:var(--f-mono)}
+.diff .hd{font:500 12px/1 var(--f-kr);color:var(--muted);background:var(--gray);padding:11px 16px;border-bottom:1px solid var(--line)}
+.diff .l{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:11px 16px}
+.diff .minus{background:#fdf0f0;color:#b42328}
+.diff .minus .val{text-decoration:line-through;text-decoration-thickness:2px}
+.diff .plus{background:#eef5ff;color:var(--blue-dk)}
+.diff .val{font-size:19px;font-weight:600;font-variant-numeric:tabular-nums}
+.diff .note{font:500 12.5px/1 var(--f-kr)}
+
+/* ---------- footer ---------- */
+footer{background:#1c2129;color:#9aa3b0;padding-block:64px 40px;font-size:14px}
+.ft{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px}
+.ft > *{min-width:0}
+.ft .logo b{color:#fff}
+.ft .logo .mk{background:#2a313c}
+.ft .desc{margin-top:20px;line-height:1.8}
+.ft h4{color:#fff;font:600 13px/1 var(--f-en);letter-spacing:.1em;margin-bottom:18px}
+.ft ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ft button,.ft a{appearance:none;background:none;border:0;padding:0;color:#9aa3b0;font:inherit;cursor:pointer;text-decoration:none;text-align:left}
+.ft button:hover,.ft a:hover{color:#fff}
+.copy{margin-top:48px;padding-top:24px;border-top:1px solid #2e3540;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px;color:#6f7885}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  nav{gap:28px}
+  .hero-grid{grid-template-columns:1fr;padding-block:72px 80px}
+  .devices{max-width:760px}
+  .phone{right:-8px}
+  .intro,.how,.demo{grid-template-columns:1fr;gap:48px}
+  .cards,.rgrid{grid-template-columns:1fr 1fr}
+  .road{grid-template-columns:1fr 1fr;row-gap:12px}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  section{padding-block:80px}
+  .bar{grid-template-columns:1fr auto;height:auto;padding-block:12px 0;row-gap:8px}
+  nav{grid-column:1/-1;order:3;justify-content:space-around;gap:8px;border-top:1px solid var(--line)}
+  .tab{padding:12px 0 12px;font-size:12.5px}
+  .hd-right .chipbtn:not(.fill){display:none}
+  .cards,.rgrid,.team{grid-template-columns:1fr}
+  .tl{grid-template-columns:1fr;gap:16px}
+  .vision{grid-template-columns:1fr;padding:44px 28px}
+  .phone{right:-4px;width:24%}
+  .hero .facts{gap:24px}
+  .band{padding-block:96px}
+  .member .top{padding:32px 24px}.member ul{padding:24px}
+}
+@media (max-width:480px){
+  .road{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr}
+  .monitor .neck{height:32px}
+  .monitor .frame{padding:7px;border-radius:12px}
+  .monitor .frame::after{height:18px;margin:7px -7px -7px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#idea" aria-label="지퍼 합류 신호등 홈">
+      <span class="mk" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--green)"></i></span>
+      <span><b>지퍼 합류 신호등</b><small>ZIPPER MERGE SIGNAL</small></span>
+    </a>
+    <nav role="tablist" aria-label="페이지 메뉴">
+      <button class="tab" role="tab" id="tab-idea" data-view="idea">IDEA<span>창업 아이디어</span></button>
+      <button class="tab" role="tab" id="tab-team" data-view="team">TEAM<span>팀원</span></button>
+      <button class="tab" role="tab" id="tab-reflection" data-view="reflection">REFLECTION<span>프로젝트 성찰</span></button>
+    </nav>
+    <div class="hd-right">
+      <a class="chipbtn" href="https://makecode.microbit.org/80040-32174-64005-80104" target="_blank" rel="noopener">CODE</a>
+      <button class="chipbtn fill" type="button" data-jump="demo">DEMO</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ===================================================== -->
+<!-- 1. IDEA                                                -->
+<!-- ===================================================== -->
+<div class="panel" id="view-idea" role="tabpanel" aria-labelledby="tab-idea">
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="tagline en">Smart Zipper-Merge Signal for School Zones</p>
+        <h1>Order at every<br>school-zone merge.</h1>
+        <p class="kr-h1">학교 앞 합류 구간에 순서를 만드는 신호등</p>
+        <p class="sub">초음파 센서가 합류 차량을 감지할 때만 LED 신호가 켜지고, 두 차로가 한 대씩 번갈아 지나가도록 안내합니다.</p>
+        <div class="ctas">
+          <button class="btn" type="button" data-jump="how">솔루션 바로가기</button>
+          <button class="btn ghost" type="button" data-jump="demo">시연 영상 보기</button>
+        </div>
+        <div class="facts">
+          <div><b>40<small>%</small></b><span>정체 길이 최대 감소</span></div>
+          <div><b>70<small>%</small></b><span>장비 비용 절감</span></div>
+          <div><b>1:1</b><span>번갈아 합류</span></div>
+        </div>
+      </div>
+
+      <div class="devices">
+        <div class="monitor">
+          <div class="frame"><div class="screen">
+            <!-- 교통 상황 대시보드 -->
+            <div class="dash" id="dashboard" aria-label="교통 상황 대시보드">
+              <div class="dash-top">
+                <div class="dash-title"><b>교통 상황 대시보드</b><span class="loc">학교 앞 합류 구간</span><span class="sim-tag">SIM</span></div>
+                <div class="dash-ctrl">
+                  <div class="seg" role="group" aria-label="교통량">
+                    <button type="button" id="lv-low" data-lv="low" aria-pressed="false">한산</button>
+                    <button type="button" id="lv-mid" data-lv="mid" aria-pressed="true">보통</button>
+                    <button type="button" id="lv-high" data-lv="high" aria-pressed="false">등교 시간</button>
+                  </div>
+                  <button type="button" class="icon-btn" id="playBtn" aria-pressed="false">일시정지</button>
+                </div>
+              </div>
+              <div class="dash-body">
+                <div class="canvas-box" id="canvasBox">
+                  <canvas id="road" role="img" aria-label="본류 도로와 합류 도로가 만나는 구간. 초음파 센서가 합류 차량을 감지하면 LED 신호등이 바뀌어 한 대씩 번갈아 합류합니다."></canvas>
+                  <div class="mini" aria-hidden="true"><span><i id="mA"></i>A</span><span><i id="mB"></i>B</span><span id="mN">합류 0대</span></div>
+                </div>
+                <div class="side">
+                  <div>
+                    <h4>LED 신호 상태</h4>
+                    <div class="sig-row">
+                      <div class="sig"><span class="lamps"><i class="r" id="aR"></i><i class="g" id="aG"></i></span><div><b>신호등 A</b><span id="aTxt">본류 · 진행</span></div></div>
+                      <div class="sig"><span class="lamps"><i class="r" id="bR"></i><i class="g" id="bG"></i></span><div><b>신호등 B</b><span id="bTxt">합류 · 정지</span></div></div>
+                    </div>
+                  </div>
+                  <div>
+                    <h4>초음파 센서</h4>
+                    <div class="sensor" id="sensorBox"><span class="state" id="sensorTxt">차 없음</span><span class="dist" id="distTxt">—<small>cm</small></span></div>
+                  </div>
+                  <div class="kpis">
+                    <div class="kpi"><span>합류 완료</span><b id="kMerged">0<small>대</small></b></div>
+                    <div class="kpi"><span>본류 통과</span><b id="kMain">0<small>대</small></b></div>
+                    <div class="kpi"><span>대기 차량</span><b id="kWait">0<small>대</small></b></div>
+                    <div class="kpi"><span>평균 대기</span><b id="kAvg">0.0<small>초</small></b></div>
+                  </div>
+                  <div>
+                    <h4>이벤트 기록</h4>
+                    <ul class="log" id="log"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+          <div class="neck"></div><div class="base"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 소개 -->
+  <section>
+    <div class="wrap intro">
+      <div>
+        <span class="eyebrow">About</span>
+        <h2>등하교길의 불편함에서 시작한<br><q>지퍼 합류 신호등</q></h2>
+        <p class="en-sub en">Built for safer school zones.</p>
+        <p class="lead">등하교 시간마다 학부모 차량과 학원 차량이 학교 앞으로 몰립니다. 두 차로가 하나로 합쳐지는 구간에서 서로 먼저 가려고 끼어들다 보니 차가 멈춰 서고, 경적과 급정거가 반복됩니다. 그 사이를 지나는 학생들도 위험에 노출됩니다.</p>
+        <button class="btn" type="button" data-go="team">팀 소개 바로가기</button>
+      </div>
+      <figure class="photo" style="margin:0">
+        <img src="poster.jpg" alt="교실 책상 위에 만든 도로 모형과 micro:bit, LED 신호등이 켜진 시제품">
+        <figcaption class="cap"><b>PROTOTYPE</b><span>직접 제작한 맞춤 도로 모형</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 기술 띠 -->
+  <div class="band">
+    <div class="wrap">
+      <span class="eyebrow">Zipper Merge Engine</span>
+      <h2>초음파 센서로 차량을 감지하고<br>LED 신호로 순서를 정하는<br>학교 앞 지퍼 합류 시스템</h2>
+      <button class="btn white" type="button" data-jump="how">작동 원리 보기</button>
+    </div>
+  </div>
+
+  <!-- 문제 -->
+  <section class="gray">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Problem</span>
+        <h2 class="h2">정체는 차가 많아서가 아니라<br>순서가 없어서 생깁니다</h2>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 16V11l2-5h10l2 5v5"/><path d="M3 16h18v3H3z"/><path d="M7 13h1M16 13h1"/></svg></div>
+          <h3>일상의 불편함</h3>
+          <p>두 차로가 하나로 합쳐지는 구간에서 서로 먼저 가려고 끼어들다 보니 차가 멈춰 서고, 경적과 급정거가 반복됩니다.</p>
+          <span class="more">등하교 시간 학교 앞</span>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <h3>데이터의 힘</h3>
+          <p>매일 등교길에서 지켜본 결과, 정체는 합류 지점에서 순서가 정해지지 않아 생기는 경우가 많았습니다. 한쪽 차로는 계속 밀려들고 다른 쪽은 틈을 찾지 못해 멈춰 있었습니다.</p>
+          <span class="more">지퍼 합류 시 정체 최대 40% 감소 · 미국 미네소타 교통국</span>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="8" y="2.5" width="8" height="15" rx="2"/><circle cx="12" cy="7" r="1.6"/><circle cx="12" cy="13" r="1.6"/><path d="M12 17.5V22"/></svg></div>
+          <h3>기존 방식의 한계</h3>
+          <p>고정 신호등은 차가 없어도 정해진 시간대로만 바뀌어 텅 빈 도로 앞에서도 기다려야 합니다. 정작 합류 구간에는 신호가 없어 운전자의 양보에만 의존합니다.</p>
+          <span class="more">합류 구간 신호 부재</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 작동 원리 -->
+  <section id="how">
+    <div class="wrap how">
+      <div>
+        <span class="eyebrow">Solution</span>
+        <h2 class="h2">자동차(마퀸)가 감지될 때만<br>작동하는 신호등</h2>
+        <p class="lead">항상 켜져 있는 신호 대신, 합류 구간에 차가 들어올 때만 신호를 주어 두 차로가 번갈아 지나가도록 안내합니다.</p>
+        <div class="steps">
+          <div class="step"><span class="n">STEP 01</span><div><h3>초음파 센서가 차량 감지</h3><p>Trig <code class="k">P14</code> · Echo <code class="k">P15</code>로 합류 도로의 거리를 계속 측정합니다.</p></div></div>
+          <div class="step"><span class="n">STEP 02</span><div><h3>LED 신호 전환</h3><p>차가 가까워지면 NeoPixel LED 한 줄(<code class="k">P0</code>)은 빨강, 다른 한 줄(<code class="k">P1</code>)은 초록으로 바뀝니다.</p></div></div>
+          <div class="step"><span class="n">STEP 03</span><div><h3>한 대씩 번갈아 합류</h3><p>신호를 <code class="k">4500ms</code> 유지한 뒤 순서를 넘겨 다음 차로가 지나갑니다.</p></div></div>
+        </div>
+      </div>
+      <figure class="codebox" style="margin:0">
+        <div class="hd"><div><b>센서 사용 코드</b><span>micro:bit · Microsoft MakeCode</span></div>
+          <a class="btn sm" href="https://makecode.microbit.org/80040-32174-64005-80104" target="_blank" rel="noopener">전체 코드 보기 <span class="pl">↗</span></a>
+        </div>
+        <img src="code.jpg" alt="MakeCode 블록 코드: 초음파 센서를 P14·P15에 연결하고 NeoPixel LED 두 줄을 P0·P1에 설정한 뒤, 거리 조건에 따라 한 줄은 빨강, 한 줄은 초록으로 표시하고 4500ms 일시정지">
+      </figure>
+    </div>
+  </section>
+
+  <!-- 시연 -->
+  <section class="gray" id="demo">
+    <div class="wrap demo">
+      <div>
+        <span class="eyebrow">Prototype Demo</span>
+        <h2 class="h2">마퀸으로 직접 검증한<br>시제품 시연</h2>
+        <p class="lead">직접 만든 도로 모형 위에서 마퀸이 합류 구간에 들어오면 초음파 센서가 감지하고, LED 신호가 바뀌어 차례대로 지나가는 모습을 확인했습니다.</p>
+        <ul class="checks">
+          <li>합류 차량 감지 시에만 신호 작동</li>
+          <li>LED 두 줄로 빨강 · 초록 신호 구분</li>
+          <li>직접 제작한 맞춤 도로에서 작동 확인</li>
+        </ul>
+      </div>
+      <div class="vframe">
+        <video src="demo.mp4" poster="poster.jpg" controls playsinline preload="metadata" aria-label="시제품 시연 영상"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- 사업 -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Business</span>
+        <h2 class="h2">작은 구간에서 시작하는<br>스마트시티 인프라</h2>
+        <p class="lead">대형 교통 시스템이 챙기지 못하는 학교 인근 틈새 구간을 저렴한 비용으로 해결합니다.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></div>
+          <h3>주 고객</h3>
+          <p>지자체 스마트시티 · 교통 부서. 학교 앞, 이면도로 합류 구간에 설치합니다.</p>
+          <span class="src">B2G</span>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg></div>
+          <h3>시장 규모</h3>
+          <div class="num">2,635<small>억 달러</small></div>
+          <p>2026년 세계 스마트시티 시장. 연평균 18% 이상 성장이 전망되며, 자율주행차가 늘수록 차량과 신호가 소통하는 도로 인프라 수요는 더 커집니다.</p>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M16.5 7.5c0-1.7-2-3-4.5-3s-4.5 1.3-4.5 3 2 2.6 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3"/></svg></div>
+          <h3>가성비와 접근성</h3>
+          <div class="num">−70<small>%</small></div>
+          <p>고가의 레이더 장비 대신 저렴한 센서와 마퀸 시스템으로 비용을 줄입니다.</p>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+          <h3>현장 맞춤형</h3>
+          <p>대형 교통 시스템이 챙기지 못하는 '학교 인근' 같은 틈새 구간에 특화된 기술입니다.</p>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+          <h3>판매 방식</h3>
+          <p>시스템 설치비 + 유지보수 정기 구독형으로 안정적인 매출을 만듭니다.</p>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 10h16M6 10v8M10 10v8M14 10v8M18 10v8M3 21h18M12 3l9 5H3z"/></svg></div>
+          <h3>공공 사업 연계</h3>
+          <p>정부 스마트시티 지원금과 지자체 혁신 사업 공모로 초기 자금을 확보할 계획입니다.</p>
+        </article>
+      </div>
+
+      <div style="margin-top:100px">
+        <div class="sec-head" style="margin-bottom:36px"><span class="eyebrow">Roadmap</span><h2 class="h2">사업화 계획</h2></div>
+        <div class="road">
+          <div class="rs done"><span class="y">PHASE 01 · 완료</span><h3>시제품 제작</h3><p>초음파 센서 + LED 신호 + 맞춤 도로로 작동 검증</p></div>
+          <div class="rs"><span class="y">PHASE 02 · 계획</span><h3>공공 사업 연계</h3><p>스마트시티 지원금 · 지자체 혁신 사업 공모로 초기 자금 확보</p></div>
+          <div class="rs"><span class="y">PHASE 03 · 계획</span><h3>학교 앞 설치</h3><p>지자체 교통 부서에 설치비 + 유지보수 구독형으로 공급</p></div>
+          <div class="rs"><span class="y">VISION</span><h3>전국 학교 인근 확대</h3><p>대한민국 모든 학교 인근의 교통 체증 해결</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================================================== -->
+<!-- 2. TEAM                                                -->
+<!-- ===================================================== -->
+<div class="panel" id="view-team" role="tabpanel" aria-labelledby="tab-team" hidden>
+  <div class="subvis">
+    <div class="wrap">
+      <p class="crumb">HOME &nbsp;›&nbsp; <b>TEAM</b></p>
+      <h1>TEAM</h1>
+      <p>문제를 발견하고 직접 만든 두 사람</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="team">
+        <article class="member" style="--c:var(--navy)">
+          <div class="top"><div class="avatar">김</div><div><span class="role">MARKET ANALYST</span><h3>김건웅</h3><p class="kr">시장 분석가</p></div></div>
+          <ul>
+            <li>스마트시티 시장 규모와 성장률 조사</li>
+            <li>주 고객 정의와 판매 방식 설계</li>
+            <li>공공 사업 연계 자금 계획</li>
+          </ul>
+        </article>
+        <article class="member" style="--c:var(--blue)">
+          <div class="top"><div class="avatar">정</div><div><span class="role">MODELING · DEVELOPER</span><h3>정민영</h3><p class="kr">모델링 전문가 · 코딩 부분 제작</p></div></div>
+          <ul>
+            <li>시제품 맞춤 도로 모형 제작</li>
+            <li>micro:bit 초음파 센서 · LED 신호 코드 작성</li>
+            <li>지퍼 합류 수신부 프로그래밍</li>
+          </ul>
+        </article>
+      </div>
+      <div class="vision">
+        <span class="eyebrow">Vision</span>
+        <p>학교 앞 교통 체증, 대한민국 모든 학교 인근 교통 체증을 모두 해결하여 긍정적 영향을 미치겠습니다.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================================================== -->
+<!-- 3. REFLECTION                                          -->
+<!-- ===================================================== -->
+<div class="panel" id="view-reflection" role="tabpanel" aria-labelledby="tab-reflection" hidden>
+  <div class="subvis">
+    <div class="wrap">
+      <p class="crumb">HOME &nbsp;›&nbsp; <b>REFLECTION</b></p>
+      <h1>REFLECTION</h1>
+      <p>프로젝트 성찰 · 만들면서 배운 것들</p>
+    </div>
+  </div>
+  <section class="gray">
+    <div class="wrap">
+      <div class="rgrid">
+        <article class="card">
+          <span class="tagno">01 · 문제 인식</span>
+          <h3>우리가 본 문제</h3>
+          <p>학교 앞 합류 구간에서 차량들이 순서 없이 끼어들면서 생기는 병목 정체, 그리고 그 때문에 등하교하는 학생들의 안전이 위협받는 문제입니다.</p>
+        </article>
+        <article class="card">
+          <span class="tagno">02 · 내가 한 일</span>
+          <h3>지퍼 효과 구현</h3>
+          <p>지퍼 효과를 구현하기 위해 수신부 쪽 코드를 프로그래밍했고, LED 센서(신호등 역할)와 초음파 센서 등을 활용하여 맞춤 도로를 제작하였습니다.</p>
+        </article>
+        <article class="card">
+          <span class="tagno">03 · 어려움과 해결</span>
+          <h3>LED 위치 선정</h3>
+          <p>LED(신호등 역할)의 위치를 어떻게 잡아야 할지 문제가 생겼지만, 팀원과 협력하고 이야기를 나눈 끝에 좋은 위치를 골라 잘 선정하였습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Process</span>
+        <h2 class="h2">시행착오 기록</h2>
+        <p class="lead">한 번에 완성되지 않았습니다. 잘못된 값 하나를 찾아 고치기까지의 과정을 그대로 남깁니다.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl">
+          <div class="k"><span class="lab">STEP 01</span><span class="st">첫 코드</span></div>
+          <div>
+            <h3>게임패드 코드로 첫 시도</h3>
+            <p>게임패드(송신용) 예제 코드를 바탕으로 마퀸 제어 코드를 처음 만들었습니다.</p>
+            <a class="btn ghost sm" href="https://makecode.microbit.org/_WroWvMi68JLC" target="_blank" rel="noopener">시행착오 코드 열기 <span class="pl">↗</span></a>
+          </div>
+        </div>
+        <div class="tl err">
+          <div class="k"><span class="lab">STEP 02</span><span class="st">시행착오</span></div>
+          <div>
+            <h3>768을 955로 착각</h3>
+            <p>원래 <code class="k">768</code>이어야 하는 값을 <code class="k">955</code>로 잘못 알고 입력해 마퀸이 의도한 대로 움직이지 않았습니다.</p>
+            <div class="diff" aria-label="값 수정 내역">
+              <div class="hd">수정 내역</div>
+              <div class="l minus"><span>−</span><span class="val">955</span><span class="note">잘못 입력한 값</span></div>
+              <div class="l plus"><span>+</span><span class="val">768</span><span class="note">원래 값</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="tl ok">
+          <div class="k"><span class="lab">STEP 03</span><span class="st">해결</span></div>
+          <div>
+            <h3>값을 바로잡고 최종 코드 완성</h3>
+            <p>값을 768로 고친 뒤 다시 테스트했고, 초음파 센서 감지와 LED 신호 전환이 함께 작동하는 최종 코드를 완성했습니다.</p>
+            <a class="btn sm" href="https://makecode.microbit.org/80040-32174-64005-80104" target="_blank" rel="noopener">최종 코드 열기 <span class="pl">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <span class="logo"><span class="mk" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--green)"></i></span><span><b>지퍼 합류 신호등</b><small>ZIPPER MERGE SIGNAL</small></span></span>
+        <p class="desc">학교 앞 합류 구간 스마트 신호 시스템<br>창업 프로젝트 · 김건웅 · 정민영</p>
+      </div>
+      <div><h4>IDEA</h4><ul><li><button type="button" data-go="idea">창업 아이디어</button></li><li><button type="button" data-jump="how">작동 원리</button></li><li><button type="button" data-jump="demo">시제품 시연</button></li></ul></div>
+      <div><h4>TEAM</h4><ul><li><button type="button" data-go="team">팀원 소개</button></li><li><button type="button" data-go="team">비전</button></li></ul></div>
+      <div><h4>REFLECTION</h4><ul><li><button type="button" data-go="reflection">프로젝트 성찰</button></li><li><a href="https://makecode.microbit.org/80040-32174-64005-80104" target="_blank" rel="noopener">최종 코드 ↗</a></li><li><a href="https://makecode.microbit.org/_WroWvMi68JLC" target="_blank" rel="noopener">시행착오 코드 ↗</a></li></ul></div>
+    </div>
+    <div class="copy"><span>© 2026 지퍼 합류 신호등 창업 프로젝트</span><span>대시보드는 시제품 동작을 재현한 시뮬레이션이며 실측 데이터가 아닙니다.</span></div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- tabs ---------------- */
+(function(){
+  var views=["idea","team","reflection"];
+  var tabs=[].slice.call(document.querySelectorAll(".tab"));
+  function show(v){
+    if(views.indexOf(v)<0) v="idea";
+    views.forEach(function(n){document.getElementById("view-"+n).hidden=n!==v;});
+    tabs.forEach(function(t){var on=t.dataset.view===v;t.setAttribute("aria-selected",on);t.tabIndex=on?0:-1;});
+    document.querySelectorAll("video").forEach(function(vid){if(vid.closest("[hidden]"))vid.pause();});
+    var hv=document.getElementById("heroVid");
+    if(v==="idea" && hv && !reduce){var p=hv.play(); if(p&&p.catch)p.catch(function(){});}
+    document.dispatchEvent(new CustomEvent("viewchange",{detail:v}));
+  }
+  var reduce=window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function go(v){ if(location.hash!=="#"+v) location.hash=v; else show(v); window.scrollTo({top:0}); }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){go(t.dataset.view);});
+    t.addEventListener("keydown",function(e){
+      var d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0; if(!d)return;
+      var n=tabs[(i+d+tabs.length)%tabs.length]; n.focus(); n.click();
+    });
+  });
+  document.querySelectorAll("[data-go]").forEach(function(b){b.addEventListener("click",function(){go(b.dataset.go);});});
+  document.querySelectorAll("[data-jump]").forEach(function(b){b.addEventListener("click",function(){
+    var id=b.dataset.jump;
+    function jump(){var el=document.getElementById(id); if(el){var hh=document.querySelector("header").offsetHeight; window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-hh});}}
+    if(document.getElementById("view-idea").hidden){ go("idea"); setTimeout(jump,60);} else jump();
+  });});
+  window.addEventListener("hashchange",function(){show(location.hash.slice(1));});
+  show(location.hash.slice(1));
+})();
+
+/* ---------------- traffic dashboard simulation ---------------- */
+(function(){
+  var cv=document.getElementById("road"), ctx=cv.getContext("2d"), box=document.getElementById("canvasBox");
+  var W=1000,H=470;
+  var C={bg:"#0f1626",grid:"#172238",road:"#2b3548",edge:"#8592a8",dash:"#c9d1de",label:"#aab4c6",
+         red:"#e5484d",green:"#18b26b",blue:"#4f8cff"};
+  var CAR_COLORS=["#4f8cff","#20b8c8","#7c6cf2","#e8eef7","#f0b429","#5b6cff"];
+  var FONT='"Geist","Gothic A1","Apple SD Gothic Neo",sans-serif';
+
+  var MAIN_Y=190, ROAD_H=72, A, B, dx, dy, L, dir, ang, nrm, STOP_M, SENSOR_S;
+  var STOP_A=380;
+  var main=[], merge=[];
+  function geom(h){
+    var oldL=L; H=Math.max(440,h);
+    MAIN_Y=Math.round(Math.min(230,Math.max(170,H*0.3)));
+    A={x:-60,y:H}; B={x:560,y:MAIN_Y};
+    dx=B.x-A.x; dy=B.y-A.y; L=Math.hypot(dx,dy); dir={x:dx/L,y:dy/L}; ang=Math.atan2(dy,dx);
+    nrm={x:-dir.y,y:dir.x};
+    STOP_M=L-175; SENSOR_S=STOP_M-120;
+    if(oldL) merge.forEach(function(c){c.s=Math.max(0,c.s+(L-oldL));});
+  }
+  geom(560);
+  var CAR_L=48, CAR_W=26, GAP=16, V=130;
+  function P(s){return {x:A.x+dir.x*s,y:A.y+dir.y*s};}
+
+  var running=true, level="mid";
+  var RATES={low:[2.6,5.2],mid:[1.55,3.1],high:[0.95,1.9]};
+  var spawnMain=0, spawnMerge=1.2, colorIdx=0;
+  var stats={merged:0,main:0,waitSum:0};
+  var ctl={state:"MAIN",t:0,mainPassed:0,mergedThis:0};
+  var detected=false, detectDist=null, lastDetected=false;
+  var logEl=document.getElementById("log"), logs=[], warm=true;
+
+  function nextColor(){colorIdx=(colorIdx+1)%CAR_COLORS.length;return CAR_COLORS[colorIdx];}
+  function lightA(){return ctl.state==="MAIN"?"green":"red";}
+  function lightB(){return ctl.state==="MERGE"?"green":"red";}
+  function addLog(msg){
+    if(warm) return;
+    var d=new Date(), ts=[d.getHours(),d.getMinutes(),d.getSeconds()].map(function(n){return(n<10?"0":"")+n;}).join(":");
+    logs.unshift({ts:ts,msg:msg}); logs=logs.slice(0,4);
+    logEl.innerHTML=logs.map(function(l){return "<li><time>"+l.ts+"</time><span>"+l.msg+"</span></li>";}).join("");
+  }
+
+  function step(dt){
+    var r=RATES[level];
+    spawnMain-=dt;
+    if(spawnMain<=0){
+      var last=main.reduce(function(m,c){return Math.min(m,c.x);},Infinity);
+      if(last>CAR_L+GAP && main.length<16) main.push({x:-4,c:nextColor(),moved:true});
+      spawnMain=r[0]*(0.75+Math.random()*0.5);
+    }
+    spawnMerge-=dt;
+    if(spawnMerge<=0){
+      var lastS=merge.reduce(function(m,c){return Math.min(m,c.s);},Infinity);
+      if(lastS>CAR_L+GAP+40 && merge.length<7) merge.push({s:40,c:nextColor(),wait:0,moved:true});
+      spawnMerge=r[1]*(0.75+Math.random()*0.5);
+    }
+    merge.sort(function(a,b){return b.s-a.s;});
+    for(var i=0;i<merge.length;i++){
+      var c=merge[i], lim=i===0?Infinity:merge[i-1].s-CAR_L-GAP;
+      if(lightB()==="red" && c.s<=STOP_M+0.01) lim=Math.min(lim,STOP_M);
+      var ns=Math.max(c.s,Math.min(c.s+V*dt,lim));
+      c.moved=ns-c.s>V*dt*0.3; if(!c.moved) c.wait+=dt;
+      c.s=ns;
+    }
+    for(i=merge.length-1;i>=0;i--){
+      if(merge[i].s>=L){
+        var mc=merge.splice(i,1)[0];
+        main.push({x:B.x,c:mc.c,moved:true});
+        stats.merged++; stats.waitSum+=mc.wait; ctl.mergedThis++;
+        addLog("합류 완료 · 누적 "+stats.merged+"대");
+      }
+    }
+    main.sort(function(a,b){return b.x-a.x;});
+    for(i=0;i<main.length;i++){
+      c=main[i]; lim=i===0?Infinity:main[i-1].x-CAR_L-GAP;
+      if(lightA()==="red" && c.x<=STOP_A+0.01) lim=Math.min(lim,STOP_A);
+      var nx=Math.max(c.x,Math.min(c.x+V*dt,lim));
+      if(c.x<STOP_A && nx>=STOP_A){stats.main++; ctl.mainPassed++;}
+      c.moved=nx-c.x>V*dt*0.3; c.x=nx;
+    }
+    main=main.filter(function(c){return c.x<W+CAR_L+10;});
+
+    detected=false; detectDist=null;
+    for(i=0;i<merge.length;i++){
+      var gap=STOP_M-merge[i].s;
+      if(merge[i].s>SENSOR_S-60 && merge[i].s<=STOP_M+30){
+        detected=true;
+        var d=Math.max(2,Math.round(3+Math.max(0,gap)/10));
+        detectDist=detectDist===null?d:Math.min(detectDist,d);
+      }
+    }
+    if(detected&&!lastDetected) addLog("초음파 센서 · 합류 차량 감지");
+    lastDetected=detected;
+
+    ctl.t+=dt;
+    if(ctl.state==="MAIN"){
+      if(detected && ctl.t>1.4 && (ctl.mainPassed>=1 || ctl.t>3.5)){ctl.state="CLEAR1";ctl.t=0;addLog("신호등 A 빨강 전환");}
+    }else if(ctl.state==="CLEAR1"){
+      if(ctl.t>0.7){ctl.state="MERGE";ctl.t=0;ctl.mergedThis=0;addLog("신호등 B 초록 · 합류 진행");}
+    }else if(ctl.state==="MERGE"){
+      var leaving=merge.some(function(c){return c.s>STOP_M+1;});
+      if(leaving && ctl.t>0.2){ctl.state="SEND";ctl.t=0;}
+      else if(!leaving && (ctl.t>4.5 || (ctl.t>1.2 && !detected))){ctl.state="CLEAR2";ctl.t=0;addLog("신호등 B 빨강 · 본류 차례");}
+    }else if(ctl.state==="SEND"){
+      if(!merge.some(function(c){return c.s>STOP_M+1;})){ctl.state="CLEAR2";ctl.t=0;addLog("신호등 B 빨강 · 본류 차례");}
+    }else if(ctl.state==="CLEAR2"){
+      if(ctl.t>0.5){ctl.state="MAIN";ctl.t=0;ctl.mainPassed=0;addLog("신호등 A 초록 · 본류 진행");}
+    }
+  }
+
+  var dpr=1, scale=1;
+  function resize(){
+    var w=box.clientWidth, h=box.clientHeight;
+    if(!w||!h) return false;
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    scale=w/W; geom(h/scale);
+    cv.width=Math.round(w*dpr); cv.height=Math.round(h*dpr);
+    return true;
+  }
+  function fs(px){return Math.max(px,8.5/scale);}
+  function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+  function car(color){
+    ctx.fillStyle="rgba(0,0,0,.35)"; roundRect(-CAR_L+2,-CAR_W/2+3,CAR_L,CAR_W,6); ctx.fill();
+    ctx.fillStyle=color; roundRect(-CAR_L,-CAR_W/2,CAR_L,CAR_W,6); ctx.fill();
+    ctx.fillStyle="#0e1422"; roundRect(-CAR_L*0.62,-CAR_W/2+4,CAR_L*0.36,CAR_W-8,3); ctx.fill();
+    ctx.fillStyle="#fff7c2"; ctx.fillRect(-3,-CAR_W/2+3,2.5,4); ctx.fillRect(-3,CAR_W/2-7,2.5,4);
+  }
+  function lamp(x,y,state,label,labelPos){
+    ctx.fillStyle="#05080f"; ctx.strokeStyle="#2e3a52"; ctx.lineWidth=2;
+    roundRect(x-13,y-30,26,60,8); ctx.fill(); ctx.stroke();
+    [["red",y-14],["green",y+14]].forEach(function(o){
+      var on=state===o[0], col=o[0]==="red"?C.red:C.green;
+      ctx.beginPath(); ctx.arc(x,o[1],8,0,Math.PI*2);
+      ctx.fillStyle=on?col:(o[0]==="red"?"#2a1517":"#0f2a1d");
+      if(on){ctx.shadowColor=col;ctx.shadowBlur=18;}
+      ctx.fill(); ctx.shadowBlur=0;
+    });
+    ctx.fillStyle=C.label; ctx.font="500 "+fs(13)+"px "+FONT; ctx.textAlign="center";
+    ctx.fillText(label,x,labelPos==="top"?y-40:y+30+fs(18));
+  }
+  function draw(){
+    ctx.setTransform(dpr*scale,0,0,dpr*scale,0,0);
+    ctx.fillStyle=C.bg; ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle=C.grid; ctx.lineWidth=1;
+    for(var gx=0;gx<=W;gx+=40){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}
+    for(var gy=0;gy<=H;gy+=40){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+
+    ctx.save(); ctx.translate(A.x,A.y); ctx.rotate(ang);
+    ctx.fillStyle=C.road; ctx.fillRect(0,-ROAD_H/2,L,ROAD_H);
+    ctx.strokeStyle=C.edge; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(0,ROAD_H/2); ctx.lineTo(L,ROAD_H/2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0,-ROAD_H/2); ctx.lineTo(L-150,-ROAD_H/2); ctx.stroke();
+    var bRed=lightB()==="red";
+    ctx.strokeStyle=bRed?C.red:"rgba(24,178,107,.55)"; ctx.lineWidth=5;
+    if(bRed){ctx.shadowColor=C.red;ctx.shadowBlur=10;}
+    ctx.beginPath(); ctx.moveTo(STOP_M+2,-ROAD_H/2+4); ctx.lineTo(STOP_M+2,ROAD_H/2-4); ctx.stroke(); ctx.shadowBlur=0;
+    if(detected){
+      var gr=ctx.createLinearGradient(0,ROAD_H/2+40,0,-ROAD_H/2);
+      gr.addColorStop(0,"rgba(79,140,255,.45)"); gr.addColorStop(1,"rgba(79,140,255,.06)");
+      ctx.fillStyle=gr;
+    }else ctx.fillStyle="rgba(79,140,255,.08)";
+    ctx.beginPath(); ctx.moveTo(SENSOR_S,ROAD_H/2+44); ctx.lineTo(SENSOR_S-60,-ROAD_H/2+4); ctx.lineTo(STOP_M-4,-ROAD_H/2+4); ctx.closePath(); ctx.fill();
+    ctx.restore();
+
+    ctx.fillStyle=C.road; ctx.fillRect(0,MAIN_Y-ROAD_H/2,W,ROAD_H);
+    ctx.strokeStyle=C.edge; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(0,MAIN_Y-ROAD_H/2); ctx.lineTo(W,MAIN_Y-ROAD_H/2); ctx.stroke();
+    var yb=MAIN_Y+ROAD_H/2, h=ROAD_H/2;
+    var sL=(A.y-(yb+h*nrm.y))/(-dir.y), sR=(A.y-(yb-h*nrm.y))/(-dir.y);
+    var xL=A.x+dir.x*sL-nrm.x*h, xR=A.x+dir.x*sR+nrm.x*h;
+    ctx.beginPath(); ctx.moveTo(0,yb); ctx.lineTo(xL,yb); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xR,yb); ctx.lineTo(W,yb); ctx.stroke();
+    ctx.strokeStyle=C.dash; ctx.lineWidth=2; ctx.setLineDash([16,14]);
+    ctx.beginPath(); ctx.moveTo(0,MAIN_Y); ctx.lineTo(W,MAIN_Y); ctx.stroke(); ctx.setLineDash([]);
+    var aRed=lightA()==="red";
+    ctx.strokeStyle=aRed?C.red:"rgba(24,178,107,.55)"; ctx.lineWidth=5;
+    if(aRed){ctx.shadowColor=C.red;ctx.shadowBlur=10;}
+    ctx.beginPath(); ctx.moveTo(STOP_A+2,MAIN_Y-ROAD_H/2+4); ctx.lineTo(STOP_A+2,MAIN_Y+ROAD_H/2-4); ctx.stroke(); ctx.shadowBlur=0;
+
+    merge.forEach(function(c){var p=P(c.s);ctx.save();ctx.translate(p.x,p.y);ctx.rotate(ang);car(c.c);ctx.restore();});
+    main.forEach(function(c){ctx.save();ctx.translate(c.x,MAIN_Y);car(c.c);ctx.restore();});
+
+    lamp(STOP_A-6,MAIN_Y-ROAD_H/2-46,lightA(),"LED 신호등 A","top");
+    var bp=P(STOP_M); lamp(bp.x+nrm.x*74+16,bp.y+nrm.y*74,lightB(),"LED 신호등 B","bottom");
+
+    var sp=P(SENSOR_S); var sx=sp.x+nrm.x*62, sy=sp.y+nrm.y*62;
+    ctx.save(); ctx.translate(sx,sy); ctx.rotate(ang);
+    ctx.fillStyle="#1d3a7a"; ctx.strokeStyle=C.blue; ctx.lineWidth=2;
+    roundRect(-22,-13,44,26,6); ctx.fill(); ctx.stroke();
+    ctx.fillStyle="#dbe7ff"; ctx.beginPath(); ctx.arc(-9,0,6,0,Math.PI*2); ctx.arc(9,0,6,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle="#1d3a7a"; ctx.beginPath(); ctx.arc(-9,0,3,0,Math.PI*2); ctx.arc(9,0,3,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+    ctx.font="700 "+fs(13)+"px "+FONT; ctx.textAlign="center"; ctx.fillStyle="#7fb2ff";
+    ctx.fillText("초음파 센서",sx,sy+34);
+    ctx.font="500 "+fs(12)+"px "+FONT; ctx.fillStyle=detected?"#7fb2ff":C.label;
+    ctx.fillText(detected?("차량 감지 · "+detectDist+"cm"):"차 없음",sx,sy+34+fs(17));
+
+    ctx.textAlign="left"; ctx.font="700 "+fs(14)+"px "+FONT; ctx.fillStyle=C.label;
+    ctx.fillText("본류 도로 (정체 구간)",16,MAIN_Y-ROAD_H/2-14);
+    ctx.fillText("합류 도로 (1:1 교대 지퍼합류)",16,MAIN_Y+ROAD_H/2+40);
+  }
+
+  var el=function(id){return document.getElementById(id);};
+  var last={};
+  function panel(){
+    var a=lightA(), b=lightB();
+    if(last.a!==a){el("aR").classList.toggle("on",a==="red");el("aG").classList.toggle("on",a==="green");el("aTxt").textContent="본류 · "+(a==="green"?"진행":"정지");el("mA").style.background=a==="green"?"var(--green)":"var(--red)";last.a=a;}
+    if(last.b!==b){el("bR").classList.toggle("on",b==="red");el("bG").classList.toggle("on",b==="green");el("bTxt").textContent="합류 · "+(b==="green"?"진행":"정지");el("mB").style.background=b==="green"?"var(--green)":"var(--red)";last.b=b;}
+    el("sensorBox").classList.toggle("on",detected);
+    el("sensorTxt").textContent=detected?"차량 감지":"차 없음";
+    el("distTxt").innerHTML=(detected?detectDist:"—")+"<small>cm</small>";
+    el("kMerged").innerHTML=stats.merged+"<small>대</small>";
+    el("mN").textContent="합류 "+stats.merged+"대";
+    el("kMain").innerHTML=stats.main+"<small>대</small>";
+    var waiting=main.filter(function(c){return !c.moved && c.x>0;}).length+merge.filter(function(c){return !c.moved;}).length;
+    el("kWait").innerHTML=waiting+"<small>대</small>";
+    el("kAvg").innerHTML=(stats.merged?(stats.waitSum/stats.merged):0).toFixed(1)+"<small>초</small>";
+  }
+
+  resize();
+  for(var k=0;k<240;k++) step(1/30);
+  stats={merged:0,main:0,waitSum:0};
+  warm=false;
+  addLog("대시보드 연결 · 지퍼 합류 모드");
+  draw(); panel();
+
+  if("ResizeObserver" in window){ new ResizeObserver(function(){ if(resize()) draw(); }).observe(box); }
+  else window.addEventListener("resize",function(){ if(resize()) draw(); });
+
+  var visible=true, viewOn=!document.getElementById("view-idea").hidden, prev=null, acc=0;
+  function loop(ts){
+    if(prev===null) prev=ts;
+    var dt=Math.min(0.05,(ts-prev)/1000); prev=ts;
+    if(running && visible && viewOn){ step(dt); draw(); acc+=dt; if(acc>0.15){panel();acc=0;} }
+    requestAnimationFrame(loop);
+  }
+  if("IntersectionObserver" in window) new IntersectionObserver(function(es){visible=es[0].isIntersecting;}).observe(box);
+  document.addEventListener("viewchange",function(e){viewOn=e.detail==="idea"; if(viewOn && resize()) draw();});
+
+  var playBtn=el("playBtn");
+  function setRun(r){running=r;playBtn.textContent=r?"일시정지":"재생";playBtn.setAttribute("aria-pressed",String(!r));}
+  playBtn.addEventListener("click",function(){setRun(!running);});
+  if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) setRun(false);
+  document.querySelectorAll(".seg button").forEach(function(b){
+    b.addEventListener("click",function(){
+      level=b.dataset.lv;
+      document.querySelectorAll(".seg button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+      addLog("교통량 변경 · "+b.textContent);
+    });
+  });
+  requestAnimationFrame(loop);
+})();
+</script>
+
+</body>
+</html>
